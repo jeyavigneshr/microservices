@@ -28,10 +28,9 @@ public class TripDetailsConsumer {
 
 	public static List<LocationDTO> alpha;
 
-	@JmsListener(destination = "trip-queue")
+	@JmsListener(destination = "trip-queue",concurrency = "1-50")
 	public void tripListener(String message) {
 		logger.info("Message received"+message);
-		
 	}
 
 	@PostConstruct
